@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    <bean id="cP437_8x8" class="asciiPanel.AsciiFont">-->
+<!--        <constructor-arg name="filename" value="cp437_8x8.png"/>-->
+<!--        <constructor-arg name="height" value="8"/>-->
+<!--        <constructor-arg name="width" value="8" />-->
+<!--    </bean>-->
+<!--    <bean id="cP437_8x16" class="asciiPanel.AsciiFont">-->
+<!--        <constructor-arg name="filename" value="cp437_8x16.png"/>-->
+<!--        <constructor-arg name="height" value="8"/>-->
+<!--        <constructor-arg name="width" value="16" />-->
+<!--    </bean>-->
+
+    <bean id="asciiPanel" class="asciiPanel.AsciiPanel">
+        <property name="asciiFont" value="CP437_9x16"/>
+    </bean>
+</beans>
