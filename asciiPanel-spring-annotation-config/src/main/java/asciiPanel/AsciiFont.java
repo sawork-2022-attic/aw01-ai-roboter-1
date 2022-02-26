@@ -1,6 +1,8 @@
 package asciiPanel;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +12,6 @@ import org.springframework.stereotype.Component;
  * @author zn80
  *
  */
-@Component
 public class AsciiFont {
 
 	public static final AsciiFont CP437_8x8 = new AsciiFont("cp437_8x8.png", 8, 8);
@@ -41,8 +42,8 @@ public class AsciiFont {
 		return height;
 	}
 
-	public AsciiFont(@Value("${filename}") String filename, @Value("${width}") int width,
-					 @Value("${height}") int height) {
+	public AsciiFont(String filename,  int width,
+					 int height) {
 		this.fontFilename = filename;
 		this.width = width;
 		this.height = height;

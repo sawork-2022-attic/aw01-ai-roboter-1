@@ -1,91 +1,27 @@
-# AsciiPanel
+# spring-annotation-config
 
-[![Build Status](https://travis-ci.org/roddy/MavenizedAsciiPanel.svg)](https://travis-ci.org/roddy/MavenizedAsciiPanel)
+基于spring-annotation-config的方式实现的组件化和注入
 
-AsciiPanel simulates a [code page 437](https://en.wikipedia.org/wiki/Code_page_437) ASCII terminal display. It supports all 256 characters of codepage 437, arbitrary foreground colors, arbitrary background colors, and arbitrary terminal sizes.
+## 注入配置
 
-The default terminal size is 80x24 characters and default colors matching the Windows Command Prompt are provided. The default font is 9x16 pixel CP437 (`CP437_9x16`.)
+### 添加注解
+在src/main/java/asciiPanel/AsciiPanel.java中，添加AutoWired注解到setAsciiFont中,然后通过Value注解设置font参数的值，将其绑定到properties的font变量上
 
-This should be useful to roguelike developers.
+### context配置
+在src/main/resource/config-annotation.xml中,设置annotation-config，base-package和property-placeholder location.
 
-## Usage
+### property设置
+在src/resource/value.properties中进行值的设置,font = CP437_9x16,之后可以修改值来进行不同组件之间的注入
 
-AsciiPanel supports the customization of fonts. The following system fonts are provided:
-- CP437_9x16 
-- CP437_8x8 
-- CP437_10x10 
-- CP437_12x12
-- CP437_16x16
+## 运行
+直接使用main函数可以运行
 
-In addition, the following fontsets from the [Dwarf Fortress Tileset](http://dwarffortresswiki.org/Tileset_repository) are also included:
-- DRAKE_10x10
-- QBICFEET_10x10 
-- TALRYTH_15x15 
+## spring-xml-config
 
-The AsciiPanel class provides a special three-parameter constructor to support font customization. Simply pass the desired AsciiFont as the third parameter as follows.
+基于spring-xml-config的方式实现的组件化和注入
 
-```java
-AsciiPanel myPanel = new AsciiPanel(80, 24, AsciiFont.DRAKE_10x10);
+### 注入配置
+注入配置位于scr/main/resource/config.xml中,实现采用的注入setter,默认为CP437_9x16可以修改
 
-```
-
-## Build instructions
-
-AsciiPanel is a [Maven](https://maven.apache.org/) project, compatible with Maven 2 and Maven 3. It can be built using the following command:
-
-```
-mvn install
-```
-
-This will build the project, run the unit tests, and copy the resulting jar into your local Maven repository. Once the jar is deployed to your repository, you can include it in your projects by including the following dependency in your pom:
-
-```xml
-<dependency>
-  <groupId>net.trystan</groupId>
-  <artifactId>ascii-panel</artifactId>
-  <version>1.1</version>
-</dependency>
-```
-
-Or you can add the jitpack repository to your pom:
-
-```xml
-<repository>
-  <id>jitpack.io</id>
-  <url>https://jitpack.io</url>
-</repository>
-```
-
-which provides AsciiPanel as dependency at:
-
-```xml
-<dependency>
-  <groupId>com.github.trystan</groupId>
-  <artifactId>AsciiPanel</artifactId>
-  <version>31bc98d</version>
-</dependency>
-```
-
-where `<version/>` describes the git commit you want to use.
-
-For Gradle users:
-
-```gradle
-repositories {
-    //...
-    allprojects {
-        repositories {
-            maven { url 'https://jitpack.io' }
-        }
-    }
-}
-
-dependencies {
-    //...
-    compile 'com.github.trystan:AsciiPanel:master-SNAPSHOT'
-}
-```
-
-## Notes
-
-This project is built with Java 8. However the code itself does not *require* Java 8. If you are supporting a project running an earlier version of Java, you can change the pom file and rebuild the jar using your chosen version of Java without having to modify the code.
+### 运行
+直接使用main函数可以运行

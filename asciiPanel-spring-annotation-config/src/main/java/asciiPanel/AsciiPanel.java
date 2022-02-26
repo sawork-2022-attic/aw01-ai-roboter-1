@@ -264,7 +264,7 @@ public class AsciiPanel extends JPanel {
      * @param font
      */
     @Autowired
-    public void setAsciiFont(AsciiFont font)
+    public void setAsciiFont(@Value("${font}") AsciiFont font)
     {
         if(this.asciiFont == font)
         {
@@ -312,11 +312,6 @@ public class AsciiPanel extends JPanel {
      * @param height
      * @param font if passing null, standard font CP437_9x16 will be used
      */
-
-    public AsciiPanel(AsciiFont font) {
-        this(20, 40, font);
-    }
-
     public AsciiPanel(int width, int height, AsciiFont font) {
         super();
 
